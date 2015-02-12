@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/interface">
+        <file>res/greenLED.png</file>
+        <file>res/orangeLED.png</file>
+    </qresource>
+</RCC>
