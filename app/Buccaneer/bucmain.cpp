@@ -15,6 +15,7 @@ BucMain::BucMain(QWidget *parent) :
 	units = rack->getUnits();
 	ui->verticalMainlines->setAlignment(Qt::AlignTop);
 	ui->verticalRack->setAlignment(Qt::AlignTop);
+	ui->verticalRack->setSpacing(5);
 	std::map<std::string, RackoonIO::RackUnit*>::iterator it;
 
 

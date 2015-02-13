@@ -1,5 +1,6 @@
 #include "buecho.h"
 using namespace RackoonIO;
+#include <QImage>
 
 BuEcho::BuEcho(QWidget *parent) :
     QWidget(parent)
@@ -18,9 +19,12 @@ BuEcho::BuEcho(QWidget *parent) :
 	QLabel *labelTitle = new QLabel(this);
 	labelUnitName = new QLabel(this);
 	labelState = new QLabel(this);
-
+	labelState->setText("Decay");
+	labelState->setAlignment(Qt::AlignCenter);
 	topFrame->setMaximumHeight(25);
 	topFrame->setLayout(topLayout);
+
+	knob = new BuKnob(this);
 
 	bottomFrame->setLayout(bottomLayout);
 
@@ -32,9 +36,13 @@ BuEcho::BuEcho(QWidget *parent) :
 	topLayout->addWidget(labelUnitName);
 	topLayout->setAlignment(labelUnitName, Qt::AlignRight);
 
-	labelState->setText("Running");
-	bottomLayout->addWidget(labelState);
-	bottomLayout->setAlignment(Qt::AlignTop);
+	QVBoxLayout *decayArray = new QVBoxLayout();
+	decayArray->setAlignment(Qt::AlignRight);
+	decayArray->addWidget(labelState);
+	decayArray->addWidget(knob);
+
+	bottomLayout->setAlignment(Qt::AlignLeft);
+	bottomLayout->addLayout(decayArray);
 
 	frameLayout->addWidget(topFrame);
 	frameLayout->addWidget(bottomFrame);
@@ -56,6 +64,7 @@ void BuEcho::linkUnit(RackUnit *unit) {
 	if(unit->getRuType() != "RuEcho")
 		return;
 	ruUnit = static_cast<RuEcho*>(unit);
+	cout << "Setting callback" << endl;
 	ruUnit->onDecayChangeCallback(std::bind(&BuEcho::onDecayChange, this, std::placeholders::_1));
 	labelUnitName->setText(QString::fromStdString(unit->getName()));
 }
@@ -65,5 +74,18 @@ void BuEcho::setEventLoop(RackoonIO::EventLoop *loop) {
 }
 
 void BuEcho::onDecayChange(int value) {
-	cout << value << endl;
+	decayValue = value;
+	int angle = 0;
+	if(value > 64) {
+		angle = (int)(2*(value-64));
+	} else
+	if(value < 64) {
+		angle = (int)-(2*(64-value));
+	}
+	knob->setAngle(angle);
+	//QMetaObject::invokeMethod(this, "decayChanged", Qt::QueuedConnection, Q_ARG(int, value));
+}
+
+void BuEcho::paintEvent(QPaintEvent *e) {
+
 }

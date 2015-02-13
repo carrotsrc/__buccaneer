@@ -2,8 +2,8 @@ CONFIG      += plugin debug_and_release
 TARGET      = $$qtLibraryTarget(bunccaneerwidgetsplugin)
 TEMPLATE    = lib
 
-HEADERS     = buflacloadplugin.h bualsaplugin.h buechoplugin.h bunccaneerwidgets.h
-SOURCES     = buflacloadplugin.cpp bualsaplugin.cpp buechoplugin.cpp bunccaneerwidgets.cpp
+HEADERS     = buflacloadplugin.h bualsaplugin.h buechoplugin.h buknobplugin.h bunccaneerwidgets.h
+SOURCES     = buflacloadplugin.cpp bualsaplugin.cpp buechoplugin.cpp buknobplugin.cpp bunccaneerwidgets.cpp
 RESOURCES   = icons.qrc \
     IconSet.qrc
 LIBS        += -L. 
@@ -20,6 +20,7 @@ INSTALLS    += target
 include(bualsa.pri)
 include(buecho.pri)
 include(buflacload.pri)
+include(buknob.pri)
 
 unix:!macx: LIBS += -L$$PWD/../../../c/rackoonio/ -lrackio
 

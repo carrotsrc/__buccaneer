@@ -1,6 +1,7 @@
 #include "buflacloadplugin.h"
 #include "bualsaplugin.h"
 #include "buechoplugin.h"
+#include "buknobplugin.h"
 #include "bunccaneerwidgets.h"
 
 BunccaneerWidgets::BunccaneerWidgets(QObject *parent)
@@ -9,6 +10,7 @@ BunccaneerWidgets::BunccaneerWidgets(QObject *parent)
     m_widgets.append(new BuFlacLoadPlugin(this));
     m_widgets.append(new BuAlsaPlugin(this));
     m_widgets.append(new BuEchoPlugin(this));
+    m_widgets.append(new BuKnobPlugin(this));
 
 }
 

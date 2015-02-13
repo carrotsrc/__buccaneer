@@ -5,7 +5,9 @@
 #include <QHBoxLayout>
 #include <QFrame>
 #include <QLabel>
+#include <QImage>
 #include "units/RuEcho.h"
+#include "buknob.h"
 class BuEcho : public QWidget
 {
     Q_OBJECT
@@ -20,8 +22,13 @@ private:
     RackoonIO::EventLoop *eventLoop;
     QHBoxLayout *mainLayout;
     QLabel *labelUnitName, *labelState;
+    BuKnob *knob;
+    int decayValue;
 
     void onDecayChange(int);
+
+public slots:
+    void paintEvent(QPaintEvent *);
 };
 
 #endif
