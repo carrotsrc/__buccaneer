@@ -2,6 +2,7 @@
 #include "ui_bucmain.h"
 
 #include "buflacload.h"
+#include "buecho.h"
 #include <QVBoxLayout>
 
 BucMain::BucMain(QWidget *parent) :
@@ -13,19 +14,26 @@ BucMain::BucMain(QWidget *parent) :
 	rack->start();
 	units = rack->getUnits();
 	ui->verticalMainlines->setAlignment(Qt::AlignTop);
+	ui->verticalRack->setAlignment(Qt::AlignTop);
 	std::map<std::string, RackoonIO::RackUnit*>::iterator it;
 
 
 	for(it = units.begin(); it != units.end(); ++it) {
-	    RackoonIO::RackUnit *unit = (*it).second;
+		RackoonIO::RackUnit *unit = (*it).second;
 
-	    if(unit->getRuType() == "RuFlacLoad") {
-		    BuFlacLoad *bflac = new BuFlacLoad(this);
-		    bflac->setEventLoop(rack->getEventLoop());
-		    bflac->linkUnit(unit);
-		    mainLine.push_back(bflac);
-		    ui->verticalMainlines->addWidget(bflac);
-	    }
+		if(unit->getRuType() == "RuFlacLoad") {
+			BuFlacLoad *bflac = new BuFlacLoad(this);
+			bflac->setEventLoop(rack->getEventLoop());
+			bflac->linkUnit(unit);
+			mainLine.push_back(bflac);
+			ui->verticalMainlines->addWidget(bflac);
+		} else
+		if(unit->getRuType() == "RuEcho") {
+			BuEcho *becho = new BuEcho(this);
+			becho->setEventLoop(rack->getEventLoop());
+			becho->linkUnit(unit);
+			ui->verticalRack->addWidget(becho);
+		}
 	}
 
 

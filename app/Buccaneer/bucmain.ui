@@ -52,15 +52,29 @@
       </widget>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="verticalRack">
+      <layout class="QVBoxLayout" name="verticalBlock">
        <item>
         <widget class="QFrame" name="frame_2">
+         <property name="styleSheet">
+          <string notr="true">background-color: #1F1F1F;</string>
+         </property>
          <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
+          <enum>QFrame::Panel</enum>
          </property>
          <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
+          <enum>QFrame::Sunken</enum>
          </property>
+         <widget class="QWidget" name="verticalLayoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>-1</x>
+            <y>-1</y>
+            <width>631</width>
+            <height>521</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalRack"/>
+         </widget>
         </widget>
        </item>
       </layout>
@@ -74,7 +88,7 @@
      <x>0</x>
      <y>0</y>
      <width>933</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>

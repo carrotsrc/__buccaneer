@@ -67,15 +67,23 @@ void BuFlacLoad::dragMoveEvent(QDragMoveEvent *e) {
 }
 
 void BuFlacLoad::dropEvent(QDropEvent *e) {
-     const QMimeData *mimeData = e->mimeData();
-     if (mimeData->hasText()) {
-	     led->setText("Loading...");
-	 //led->setText(mimeData->text());
-	 //setTextFormat(Qt::PlainText);
-     } else {
-	 led->setText(tr("Cannot display data"));
-     }
-     e->acceptProposedAction();
+	e->acceptProposedAction();
+
+	if(ruUnit->isStreaming()) {
+		return;
+	}
+
+	const QMimeData *mimeData = e->mimeData();
+	if (mimeData->hasText()) {
+		led->setText("Loading...");
+	} else {
+		led->setText(tr("Cannot display data"));
+	}
+	std::string fname = mimeData->text().toStdString();
+
+	ruUnit->setFilename(fname.substr(7, fname.length()));
+	ruUnit->init();
+
 }
 
 void BuFlacLoad::dragLeaveEvent(QDragLeaveEvent *e) {

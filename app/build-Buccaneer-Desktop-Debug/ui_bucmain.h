@@ -34,8 +34,10 @@ public:
     QFrame *frame;
     QWidget *verticalLayoutWidget_2;
     QVBoxLayout *verticalMainlines;
-    QVBoxLayout *verticalRack;
+    QVBoxLayout *verticalBlock;
     QFrame *frame_2;
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *verticalRack;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -71,23 +73,32 @@ public:
 
         mainBlock->addWidget(frame);
 
-        verticalRack = new QVBoxLayout();
-        verticalRack->setSpacing(6);
-        verticalRack->setObjectName(QString::fromUtf8("verticalRack"));
+        verticalBlock = new QVBoxLayout();
+        verticalBlock->setSpacing(6);
+        verticalBlock->setObjectName(QString::fromUtf8("verticalBlock"));
         frame_2 = new QFrame(horizontalLayoutWidget);
         frame_2->setObjectName(QString::fromUtf8("frame_2"));
-        frame_2->setFrameShape(QFrame::StyledPanel);
-        frame_2->setFrameShadow(QFrame::Raised);
+        frame_2->setStyleSheet(QString::fromUtf8("background-color: #1F1F1F;"));
+        frame_2->setFrameShape(QFrame::Panel);
+        frame_2->setFrameShadow(QFrame::Sunken);
+        verticalLayoutWidget = new QWidget(frame_2);
+        verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
+        verticalLayoutWidget->setGeometry(QRect(-1, -1, 631, 521));
+        verticalRack = new QVBoxLayout(verticalLayoutWidget);
+        verticalRack->setSpacing(6);
+        verticalRack->setContentsMargins(11, 11, 11, 11);
+        verticalRack->setObjectName(QString::fromUtf8("verticalRack"));
+        verticalRack->setContentsMargins(0, 0, 0, 0);
 
-        verticalRack->addWidget(frame_2);
+        verticalBlock->addWidget(frame_2);
 
 
-        mainBlock->addLayout(verticalRack);
+        mainBlock->addLayout(verticalBlock);
 
         BucMain->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(BucMain);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 933, 21));
+        menuBar->setGeometry(QRect(0, 0, 933, 20));
         BucMain->setMenuBar(menuBar);
         mainToolBar = new QToolBar(BucMain);
         mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));
