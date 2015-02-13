@@ -30,6 +30,14 @@ private:
     QLabel *led;
 
     QLabel *labelFilename;
+protected:
+    void dragEnterEvent(QDragEnterEvent *e);
+    void dragLeaveEvent(QDragLeaveEvent *e);
+    void dragMoveEvent(QDragMoveEvent *e);
+    void dropEvent(QDropEvent *e);
+
+signals:
+    void changed(const QMimeData *mimeData = 0);
 };
 
 #endif

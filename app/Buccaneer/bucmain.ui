@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>BucMain</string>
+   <string>Buccaneer :: RackoonIO</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QWidget" name="horizontalLayoutWidget">
@@ -74,7 +74,7 @@
      <x>0</x>
      <y>0</y>
      <width>933</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

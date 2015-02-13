@@ -87,7 +87,7 @@ public:
         BucMain->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(BucMain);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 933, 20));
+        menuBar->setGeometry(QRect(0, 0, 933, 21));
         BucMain->setMenuBar(menuBar);
         mainToolBar = new QToolBar(BucMain);
         mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));
@@ -103,7 +103,7 @@ public:
 
     void retranslateUi(QMainWindow *BucMain)
     {
-        BucMain->setWindowTitle(QApplication::translate("BucMain", "BucMain", 0, QApplication::UnicodeUTF8));
+        BucMain->setWindowTitle(QApplication::translate("BucMain", "Buccaneer :: RackoonIO", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

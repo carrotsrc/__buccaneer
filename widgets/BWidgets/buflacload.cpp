@@ -23,10 +23,12 @@ BuFlacLoad::BuFlacLoad(QWidget *parent) :
 	layout->addWidget(led);
 
 	frame = new QFrame(this);
-	frame->setFrameStyle(QFrame::Sunken);
+	frame->setFrameStyle(QFrame::Panel|QFrame::Sunken);
 	frame->setLayout(layout);
+	frame->setStyleSheet("background-color: #0b1c26;");
 	frame->setAutoFillBackground(true);
 	frame->setMinimumHeight(75);
+
 
 	mainLayout->addWidget(frame);
 	setLayout(mainLayout);
@@ -54,4 +56,30 @@ void BuFlacLoad::unitOnInit(std::shared_ptr<RackoonIO::EventMessage> msg) {
 void BuFlacLoad::setEventLoop(RackoonIO::EventLoop *loop) {
 	eventLoop = loop;
 }
+
+void BuFlacLoad::dragEnterEvent(QDragEnterEvent *e) {
+    e->acceptProposedAction();
+    emit changed(e->mimeData());
+}
+
+void BuFlacLoad::dragMoveEvent(QDragMoveEvent *e) {
+    e->acceptProposedAction();
+}
+
+void BuFlacLoad::dropEvent(QDropEvent *e) {
+     const QMimeData *mimeData = e->mimeData();
+     if (mimeData->hasText()) {
+	     led->setText("Loading...");
+	 //led->setText(mimeData->text());
+	 //setTextFormat(Qt::PlainText);
+     } else {
+	 led->setText(tr("Cannot display data"));
+     }
+     e->acceptProposedAction();
+}
+
+void BuFlacLoad::dragLeaveEvent(QDragLeaveEvent *e) {
+    e->accept();
+}
+
 
