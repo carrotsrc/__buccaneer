@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QHBoxLayout>
 #include <QFrame>
+#include <QLabel>
 #include "units/RuEcho.h"
 class BuEcho : public QWidget
 {
@@ -18,6 +19,9 @@ private:
     RuEcho *ruUnit;
     RackoonIO::EventLoop *eventLoop;
     QHBoxLayout *mainLayout;
+    QLabel *labelUnitName, *labelState;
+
+    void onDecayChange(int);
 };
 
 #endif
