@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>933</width>
-    <height>572</height>
+    <width>941</width>
+    <height>675</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,7 +20,7 @@
       <x>0</x>
       <y>0</y>
       <width>931</width>
-      <height>521</height>
+      <height>631</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="mainBlock">
@@ -44,7 +44,7 @@
           <x>10</x>
           <y>10</y>
           <width>281</width>
-          <height>501</height>
+          <height>611</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalMainlines"/>
@@ -64,16 +64,20 @@
          <property name="frameShadow">
           <enum>QFrame::Sunken</enum>
          </property>
-         <widget class="QWidget" name="verticalLayoutWidget">
+         <widget class="QWidget" name="gridLayoutWidget">
           <property name="geometry">
            <rect>
             <x>-1</x>
             <y>-1</y>
-            <width>631</width>
-            <height>521</height>
+            <width>621</width>
+            <height>631</height>
            </rect>
           </property>
-          <layout class="QVBoxLayout" name="verticalRack"/>
+          <layout class="QGridLayout" name="verticalRack">
+           <property name="spacing">
+            <number>5</number>
+           </property>
+          </layout>
          </widget>
         </widget>
        </item>
@@ -87,7 +91,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>933</width>
+     <width>941</width>
      <height>20</height>
     </rect>
    </property>

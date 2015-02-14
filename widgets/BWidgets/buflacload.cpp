@@ -7,9 +7,9 @@ using namespace RackoonIO;
 BuFlacLoad::BuFlacLoad(QWidget *parent) :
     QWidget(parent)
 {
-	QVBoxLayout *layout = new QVBoxLayout(this);
+	QVBoxLayout *layout = new QVBoxLayout();
 	QVBoxLayout *mainLayout = new QVBoxLayout(this);
-
+	bottomLayout = new QHBoxLayout();
 
 	setMaximumSize(300,75);
 
@@ -18,9 +18,11 @@ BuFlacLoad::BuFlacLoad(QWidget *parent) :
 	labelFilename->setAlignment(Qt::AlignCenter);
 
 	led = new QLabel(this);
+
 	led->setText("Loading...");
 	layout->addWidget(labelFilename);
-	layout->addWidget(led);
+	layout->addLayout(bottomLayout);
+	bottomLayout->addWidget(led);
 
 	frame = new QFrame(this);
 	frame->setFrameStyle(QFrame::Panel|QFrame::Sunken);
@@ -43,6 +45,9 @@ void BuFlacLoad::linkUnit(RackUnit *unit) {
 		return;
 	eventLoop->addEventListener(FlacLoadInit, std::bind(&BuFlacLoad::unitOnInit, this, std::placeholders::_1));
 	ruUnit = static_cast<RuFlacLoad*>(unit);
+	QLabel *labelName = new QLabel(QString::fromStdString(ruUnit->getName()));
+	bottomLayout->addWidget(labelName);
+	bottomLayout->setAlignment(labelName, Qt::AlignRight);
 }
 
 void BuFlacLoad::unitOnInit(std::shared_ptr<RackoonIO::EventMessage> msg) {
@@ -50,7 +55,6 @@ void BuFlacLoad::unitOnInit(std::shared_ptr<RackoonIO::EventMessage> msg) {
 
 	labelFilename->setText(QString::fromStdString(ruUnit->getFilename()));
 	led->setText("Ready");
-	cout << _FlacLoadInit(msg)->numFrames << endl;
 }
 
 void BuFlacLoad::setEventLoop(RackoonIO::EventLoop *loop) {

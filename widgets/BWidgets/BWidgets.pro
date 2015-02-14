@@ -21,6 +21,7 @@ include(bualsa.pri)
 include(buecho.pri)
 include(buflacload.pri)
 include(buknob.pri)
+include(bulevels.pri)
 
 unix:!macx: LIBS += -L$$PWD/../../../c/rackoonio/ -lrackio
 

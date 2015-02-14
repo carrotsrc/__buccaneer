@@ -3,6 +3,7 @@
 
 #include "buflacload.h"
 #include "buecho.h"
+#include "bulevels.h"
 #include <QVBoxLayout>
 
 BucMain::BucMain(QWidget *parent) :
@@ -33,8 +34,15 @@ BucMain::BucMain(QWidget *parent) :
 			BuEcho *becho = new BuEcho(this);
 			becho->setEventLoop(rack->getEventLoop());
 			becho->linkUnit(unit);
-			ui->verticalRack->addWidget(becho);
+			ui->verticalMainlines->addWidget(becho);
 		}
+		else
+		if(unit->getRuType() == "RuLevels") {
+		       BuLevels *blevels = new BuLevels(this);
+		       blevels->setEventLoop(rack->getEventLoop());
+		       blevels->linkUnit(unit);
+		       ui->verticalRack->addWidget(blevels);
+	       }
 	}
 
 

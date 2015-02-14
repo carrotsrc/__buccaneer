@@ -51,7 +51,8 @@ BuEcho::BuEcho(QWidget *parent) :
 	frame->setMinimumHeight(100);
 	frame->setLayout(frameLayout);
 
-	frame->setStyleSheet("background-color: #45454F;");
+	//frame->setStyleSheet("background-color: #45454F;");
+	frame->setStyleSheet("background-image: url('res/dark_fish_skin.png');");
 	frame->setFrameStyle(QFrame::Panel|QFrame::Raised);
 	frame->setLineWidth(3);
 
@@ -64,7 +65,6 @@ void BuEcho::linkUnit(RackUnit *unit) {
 	if(unit->getRuType() != "RuEcho")
 		return;
 	ruUnit = static_cast<RuEcho*>(unit);
-	cout << "Setting callback" << endl;
 	ruUnit->onDecayChangeCallback(std::bind(&BuEcho::onDecayChange, this, std::placeholders::_1));
 	labelUnitName->setText(QString::fromStdString(unit->getName()));
 }

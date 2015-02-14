@@ -14,6 +14,7 @@
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
 #include <QtGui/QFrame>
+#include <QtGui/QGridLayout>
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QHeaderView>
 #include <QtGui/QMainWindow>
@@ -36,8 +37,8 @@ public:
     QVBoxLayout *verticalMainlines;
     QVBoxLayout *verticalBlock;
     QFrame *frame_2;
-    QWidget *verticalLayoutWidget;
-    QVBoxLayout *verticalRack;
+    QWidget *gridLayoutWidget;
+    QGridLayout *verticalRack;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -46,12 +47,12 @@ public:
     {
         if (BucMain->objectName().isEmpty())
             BucMain->setObjectName(QString::fromUtf8("BucMain"));
-        BucMain->resize(933, 572);
+        BucMain->resize(941, 675);
         centralWidget = new QWidget(BucMain);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         horizontalLayoutWidget = new QWidget(centralWidget);
         horizontalLayoutWidget->setObjectName(QString::fromUtf8("horizontalLayoutWidget"));
-        horizontalLayoutWidget->setGeometry(QRect(0, 0, 931, 521));
+        horizontalLayoutWidget->setGeometry(QRect(0, 0, 931, 631));
         mainBlock = new QHBoxLayout(horizontalLayoutWidget);
         mainBlock->setSpacing(6);
         mainBlock->setContentsMargins(11, 11, 11, 11);
@@ -64,7 +65,7 @@ public:
         frame->setFrameShadow(QFrame::Raised);
         verticalLayoutWidget_2 = new QWidget(frame);
         verticalLayoutWidget_2->setObjectName(QString::fromUtf8("verticalLayoutWidget_2"));
-        verticalLayoutWidget_2->setGeometry(QRect(10, 10, 281, 501));
+        verticalLayoutWidget_2->setGeometry(QRect(10, 10, 281, 611));
         verticalMainlines = new QVBoxLayout(verticalLayoutWidget_2);
         verticalMainlines->setSpacing(6);
         verticalMainlines->setContentsMargins(11, 11, 11, 11);
@@ -81,11 +82,11 @@ public:
         frame_2->setStyleSheet(QString::fromUtf8("background-color: #1F1F1F;"));
         frame_2->setFrameShape(QFrame::Panel);
         frame_2->setFrameShadow(QFrame::Sunken);
-        verticalLayoutWidget = new QWidget(frame_2);
-        verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(-1, -1, 631, 521));
-        verticalRack = new QVBoxLayout(verticalLayoutWidget);
-        verticalRack->setSpacing(6);
+        gridLayoutWidget = new QWidget(frame_2);
+        gridLayoutWidget->setObjectName(QString::fromUtf8("gridLayoutWidget"));
+        gridLayoutWidget->setGeometry(QRect(-1, -1, 621, 631));
+        verticalRack = new QGridLayout(gridLayoutWidget);
+        verticalRack->setSpacing(5);
         verticalRack->setContentsMargins(11, 11, 11, 11);
         verticalRack->setObjectName(QString::fromUtf8("verticalRack"));
         verticalRack->setContentsMargins(0, 0, 0, 0);
@@ -98,7 +99,7 @@ public:
         BucMain->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(BucMain);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 933, 20));
+        menuBar->setGeometry(QRect(0, 0, 941, 20));
         BucMain->setMenuBar(menuBar);
         mainToolBar = new QToolBar(BucMain);
         mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));

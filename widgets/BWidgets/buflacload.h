@@ -8,6 +8,7 @@
 #include <QDragEnterEvent>
 #include <QMimeData>
 #include <QLabel>
+#include <QHBoxLayout>
 
 #include "units/RuFlacLoad.h"
 
@@ -25,6 +26,9 @@ public:
 private:
     RackoonIO::EventLoop *eventLoop;
     RuFlacLoad *ruUnit;
+
+
+    QHBoxLayout *bottomLayout;
 
     QFrame *frame;
     QLabel *led;
